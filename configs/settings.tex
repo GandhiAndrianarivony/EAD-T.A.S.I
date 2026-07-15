@@ -1,0 +1,179 @@
+% config/settings.tex
+
+%==============================
+% Cleveref configuration
+%==============================
+\crefname{table}{tableau}{tableaux}
+\Crefname{table}{Tableau}{Tableaux}
+
+% Algorithm references are now figures
+\crefname{figure}{figure}{figures}
+\Crefname{figure}{Figure}{Figures}
+
+
+%==============================
+% Section numbering
+%==============================
+\setsecnumdepth{subsubsection}
+\renewcommand{\thesubsubsection}{\alph{subsubsection}.}
+
+
+%==============================
+% Remove blank pages
+%==============================
+\let\cleardoublepage\clearpage
+
+%==============================
+% Minted configuration
+%==============================
+
+\setminted{
+    frame=lines,
+    framesep=2mm,
+    fontsize=\scriptsize,
+    linenos
+}
+
+%==============================
+% Algorithm style
+%==============================
+\SetKwInOut{KwIn}{Entrée}
+\SetKwInOut{KwOut}{Sortie}
+\SetKw{KwReturn}{Retourner}
+
+% ==============================
+% Two digit in def 1.01, prop, fig, tab, ...
+% ==============================
+\makeatletter
+\newcommand{\padTwo}[1]{%
+  \ifnum#1<10 0\number#1\else\number#1\fi
+}
+\makeatother
+
+% ==============================
+% Title format
+% ==============================
+\titleformat{\chapter}[display]
+  {\centering\bfseries\fontsize{12pt}{12pt}\selectfont}
+  {CHAPITRE \thechapter}
+  {1em}
+  {\MakeUppercase}
+% Section
+\titleformat{\section}
+  {\normalfont\bfseries\fontsize{12pt}{12pt}\selectfont}
+  {\thesection}
+  {1em}
+  {}
+
+% Subsection
+\titleformat{\subsection}
+  {\normalfont\bfseries\fontsize{12pt}{12pt}\selectfont}
+  {\thesubsection}
+  {1em}
+  {}
+
+% Subsubsection (optional)
+\titleformat{\subsubsection}
+  {\normalfont\bfseries\fontsize{12pt}{12pt}\selectfont}
+  {\thesubsubsection}
+  {1em}
+  {}
+
+% ==============================
+% Normal font for caption
+% ==============================
+\captionsetup{
+    labelfont=bf,
+    textfont=normalfont
+}
+
+%==============================
+% Table des matières
+%==============================
+\setcounter{tocdepth}{2}
+% Titre
+\addto\captionsfrench{
+  \renewcommand{\contentsname}{TABLE DES MATIÈRES}
+}
+\renewcommand{\printtoctitle}[1]{%
+  \centering
+  \bfseries
+  \fontsize{12pt}{14pt}\selectfont
+  \MakeUppercase{#1}
+}
+
+% Afficher CHAPITRE dans la table des matières
+\renewcommand{\chapternumberline}[1]{CHAPITRE #1\quad}
+
+
+%==============================
+% Taille des titres dans la table
+%==============================
+
+\renewcommand{\cftchapterfont}{\bfseries\fontsize{10pt}{12pt}\selectfont}
+\renewcommand{\cftsectionfont}{\normalfont\fontsize{12pt}{12pt}\selectfont}
+\renewcommand{\cftsubsectionfont}{\normalfont\fontsize{12pt}{12pt}\selectfont}
+\renewcommand{\cftsubsubsectionfont}{\normalfont\fontsize{12pt}{12pt}\selectfont}
+
+
+%==============================
+% Alignement horizontal
+%==============================
+
+% Chapitres
+\setlength{\cftchapterindent}{0pt}
+\setlength{\cftchapternumwidth}{3.5cm}
+
+% Sections
+\setlength{\cftsectionindent}{0pt}
+\setlength{\cftsectionnumwidth}{1.5cm}
+
+% Sous-sections
+\setlength{\cftsubsectionindent}{0.8cm}
+\setlength{\cftsubsectionnumwidth}{2cm}
+
+% Sous-sous-sections
+\setlength{\cftsubsubsectionindent}{1.5cm}
+\setlength{\cftsubsubsectionnumwidth}{2.5cm}
+
+
+%==============================
+% Pointillés jusqu'au numéro de page
+%==============================
+
+\renewcommand{\cftchapterleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsectionleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsectionleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsubsectionleader}{\cftdotfill{\cftdotsep}}
+
+
+% ===============================
+% Bibliography
+%==============================
+\addbibresource{./bibliography.bib}
+\defbibheading{bibliography}{
+    \section*{\centering  REFERENCES}
+}
+% % Counter for citations in each chapter
+% \newcounter{chapcite}
+% % Reset counter at each chapter
+% \pretocmd{\chapter}{\setcounter{chapcite}{0}}{}{}
+% % Two digit format: 01, 02, ..., 10
+% \newcommand{\mytwodigits}[1]{%
+%     \ifnum\number#1<10 0\fi\number#1%
+% }
+% %------------------------------------------------
+% % Citation label: [chapter.xx]
+% %------------------------------------------------
+% \DeclareCiteCommand{\cite}
+%   {\stepcounter{chapcite}\bibopenbracket}
+%   {\printtext[bibhyperref]{\thechapter.\mytwodigits{\value{chapcite}}}}
+%   {\multicitedelim}
+%   {\bibclosebracket}
+% %------------------------------------------------
+% % Bibliography label: [chapter.xx]
+% %------------------------------------------------
+% \DeclareFieldFormat{labelnumberwidth}{\mkbibbrackets{#1}}
+% \DeclareFieldFormat{labelnumber}{%
+%     \thechapter.\mytwodigits{\value{chapcite}}%
+% }

@@ -1,0 +1,40 @@
+\documentclass[
+    12pt,
+    a4paper,
+    oneside,
+    openany
+]{memoir}
+
+% Packages
+\input{configs/packages.tex}
+% Configuration
+\input{configs/settings.tex}
+\input{configs/theorem.tex}
+\input{configs/commands.tex}
+\input{configs/page_style.tex}
+
+\begin{document}
+
+    \frontmatter
+    \includepdf[pages=-, fitpaper=true]{./documents/Couverture EAD-TASI.pdf}
+    % Title page
+    % Abstract
+    % Acknowledgements
+    % Table of contents
+    \tableofcontents*
+    \input{./abbreviations_and_notations}
+
+    \mainmatter
+    \makeatletter
+        \renewcommand{\thefigure}{\arabic{chapter}.\padTwo{\arabic{figure}}}
+        \renewcommand{\thetable}{\arabic{chapter}.\padTwo{\arabic{table}}}
+    \makeatother
+    \input{chapters/chap.1 État de l'art sur le Synthetic Aperture Radar.tex}
+
+    \backmatter
+
+    % Bibliography
+    \printbibliography
+    % Appendices
+
+\end{document}

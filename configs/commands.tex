@@ -1,0 +1,43 @@
+% config/commands.tex
+
+\newcommand{\totalfigures}{\number\value{figure}}
+\newcommand{\totaltables}{\number\value{table}}
+
+\newcommand{\annexechapter}[1]{
+  \refstepcounter{chapter}%
+  \chapter*{ANNEXE \arabic{chapter}.\quad #1}%
+  \addcontentsline{toc}{chapter}{ANNEXE \arabic{chapter}\quad #1}%
+}
+
+% Algorithm displayed like a figure
+\newenvironment{algo}[1]
+{
+  \def\algoCaption{#1}%
+  \begin{figure}[H]
+  \centering
+  \begin{tcolorbox}[
+    width=0.75\linewidth,
+    colback=white,
+    colframe=black,
+    boxrule=0.8pt,
+    arc=2mm
+  ]
+  \begin{algorithm}[H]
+}
+{
+  \end{algorithm}
+  \end{tcolorbox}
+  \caption{\algoCaption}
+  \end{figure}
+}
+
+
+\newenvironment{demo}
+{
+    \par\medskip
+    \noindent{Démonstration :}\\\(\clubsuit\)\\
+}
+{
+    \hfill\(\lozenge\)
+    \par\medskip
+}

@@ -1,0 +1,46 @@
+% config/theorem.tex
+
+% Custom theorem style:
+% Title on one line, content starts on the next line
+\newtheoremstyle{break}
+{3pt}              % Space above
+{3pt}              % Space below
+{\normalfont}      % Body font
+{}                 % Indentation
+{\normalfont}        % Head font
+{ :}               % Punctuation after theorem name
+{\newline}         % Line break after title
+{}                 % Head specification
+
+\theoremstyle{break}
+
+
+% =========================
+% Theorem environments
+% =========================
+
+\newtheorem{definition}{Définition}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\newtheorem{lemme}{Lemme}[chapter]
+% Shared counter with proposition
+\newtheorem{corollaire}[proposition]{Corollaire}
+\newtheorem{property}[proposition]{Propriété}
+\newtheorem{remarque}{Remarque}[section]
+
+% =========================
+% Numbering format
+% =========================
+
+\renewcommand{\thedefinition}{\arabic{chapter}.\padTwo{\arabic{definition}}}
+\renewcommand{\theproposition}{\arabic{chapter}.\padTwo{\arabic{proposition}}}
+\renewcommand{\thelemme}{\arabic{chapter}.\padTwo{\arabic{lemme}}}
+\renewcommand{\thecorollaire}{\arabic{chapter}.\padTwo{\arabic{proposition}}}
+\renewcommand{\theproperty}{\arabic{chapter}.\padTwo{\arabic{proposition}}}
+
+\numberwithin{figure}{chapter}
+\numberwithin{equation}{chapter}
+\renewcommand{\thetable}{\arabic{chapter}.\padTwo{\arabic{table}}}
+\renewcommand{\thefigure}{\arabic{chapter}.\padTwo{\arabic{figure}}}
+\renewcommand{\theequation}{\arabic{chapter}.\padTwo{\arabic{equation}}}
+
+
